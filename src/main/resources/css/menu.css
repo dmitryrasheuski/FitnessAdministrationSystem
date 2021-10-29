@@ -1,0 +1,13 @@
+.menu_pane {
+    -fx-background-color: #D2D2D2;
+}
+
+.toggle {
+    -fx-alignment: center;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 200px;
+}
+
+.toggle:selected {
+    -fx-background-color: #E9E9E9;
+}

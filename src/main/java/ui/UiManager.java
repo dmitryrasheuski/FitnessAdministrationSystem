@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import ui.view.ViewControllerGroupLog;
 
 import javax.inject.Singleton;
 import java.io.IOException;
@@ -25,7 +26,20 @@ public class UiManager {
         primaryStage.setScene(new Scene(rootView));
         primaryStage.setTitle("Fitness");
 
+        openGroupLogWorkspace();
         primaryStage.show();
+    }
+
+    public void openGroupLogWorkspace() {
+        Pane view;
+        try {
+            view = viewProvider.getView(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        switchWorkspace(view);
     }
 
     private void switchWorkspace(Pane workspace) {
