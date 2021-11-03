@@ -18,6 +18,7 @@ public class ViewControllerMenu implements ViewController{
     @FXML
     private void initialize() {
         ToggleGroup group = new ToggleGroup();
+        group.getToggles().add(groupButton);
         group.selectToggle(groupButton);
         groupButton.getStyleClass().remove("radio-button");
     }
