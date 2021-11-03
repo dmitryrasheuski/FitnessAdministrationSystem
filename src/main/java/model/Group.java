@@ -2,15 +2,16 @@ package model;
 
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Set;
 
 public class Group {
     private int id;
     @Getter
-    private Date period;
-    private Set<Date> plan;
+    private YearMonth period;
+    private Set<LocalDateTime> plan;
     private Set<Client> clients;
 
     public Set<Client> getClients() {
@@ -25,15 +26,15 @@ public class Group {
         clients.remove(client);
     }
 
-    public Set<Date> getPlan() {
+    public Set<LocalDateTime> getPlan() {
         return Collections.unmodifiableSet(plan);
     }
 
-    public boolean addToPlan(Date date) {
+    public boolean addToPlan(LocalDateTime date) {
         return plan.add(date);
     }
 
-    public boolean removeFromPlan(Date date) {
+    public boolean removeFromPlan(LocalDateTime date) {
         return plan.remove(date);
     }
 }

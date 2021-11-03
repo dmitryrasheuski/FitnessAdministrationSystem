@@ -2,8 +2,9 @@ package model;
 
 import lombok.Getter;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Set;
 
 public class Subscription {
@@ -11,7 +12,7 @@ public class Subscription {
     @Getter
     private WorkoutType type;
     @Getter
-    private Date period;
+    private YearMonth period;
     @Getter
     private int orderedCount;
     @Getter
@@ -22,7 +23,7 @@ public class Subscription {
         return Collections.unmodifiableSet(workouts);
     }
 
-    public void markWorkout(Date date, WorkoutState state) throws IllegalArgumentException {
+    public void markWorkout(LocalDate date, WorkoutState state) throws IllegalArgumentException {
         workouts.stream()
                 .filter(workout -> workout.getDate().equals(date))
                 .findFirst()

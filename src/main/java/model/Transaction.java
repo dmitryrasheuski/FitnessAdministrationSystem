@@ -2,12 +2,12 @@ package model;
 
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Transaction {
     private int id;
     @Getter
-    private Date date;
+    private LocalDateTime date;
     @Getter
     private TransactionType type;
     @Getter
