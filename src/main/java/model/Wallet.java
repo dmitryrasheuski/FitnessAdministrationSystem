@@ -1,17 +1,15 @@
 package model;
 
-import java.util.Collections;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Wallet {
     private int id;
     private List<Transaction> transactions;
-
-    public boolean addTransaction(Transaction transaction) {
-         return transactions.add(transaction);
-    }
-
-    public List<Transaction> getTransactions() {
-        return Collections.unmodifiableList(transactions);
-    }
 }

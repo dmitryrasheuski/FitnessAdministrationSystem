@@ -1,14 +1,16 @@
 package model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Workout {
     private int id;
-    @Getter
     private LocalDateTime date;
-    @Getter @Setter
     private WorkoutState state;
 }
