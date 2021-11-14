@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerClients implements ViewController {
+    @FXML private Pane servicedView;
     @FXML private TextField searchField;
     @FXML private ListView<Client> clientList;
     @FXML private Pane clientInfoContainer;
@@ -44,6 +45,11 @@ public class ViewControllerClients implements ViewController {
     @Override
     public String getViewPath() {
         return "view/client/clients.fxml";
+    }
+
+    @Override
+    public Pane getServicesView() {
+        return servicedView;
     }
 
     public void showNewClientDialog() {

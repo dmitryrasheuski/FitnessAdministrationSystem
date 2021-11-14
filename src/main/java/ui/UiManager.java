@@ -34,33 +34,33 @@ public class UiManager {
     }
 
     public void openGroupLogWorkspace() {
-        Pane view;
+        ViewControllerGroupLog controller;
         try {
-            view = viewProvider.getView(ViewControllerGroupLog.class);
+            controller = viewProvider.create(ViewControllerGroupLog.class);
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
 
-        switchWorkspace(view);
+        switchWorkspace(controller.getServicesView());
     }
 
     public void openClientWorkspace() {
-        Pane view;
+        ViewControllerClients controller;
         try {
-            view = viewProvider.getView(ViewControllerClients.class);
+            controller = viewProvider.create(ViewControllerClients.class);
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
 
-        switchWorkspace(view);
+        switchWorkspace(controller.getServicesView());
     }
 
     public void openNewClientDialog() {
-        Pane view;
+        ViewControllerNewClient controller;
         try {
-            view = viewProvider.getView(ViewControllerNewClient.class);
+            controller = viewProvider.create(ViewControllerNewClient.class);
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -69,7 +69,7 @@ public class UiManager {
         Stage stage = new Stage();
         stage.setTitle("Создание нового клиента");
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(new Scene(view));
+        stage.setScene(new Scene(controller.getServicesView()));
 
         stage.show();
     }

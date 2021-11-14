@@ -21,10 +21,11 @@ class ViewProvider {
         return loader.load();
     }
 
-    public Pane getView(Class<? extends ViewController> viewControllerClazz) throws IOException {
-        ViewController viewController = injector.getInstance(viewControllerClazz);
+    public <T extends ViewController> T create(Class<T> viewControllerClazz) throws IOException {
+        T viewController = injector.getInstance(viewControllerClazz);
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(viewController.getViewPath()));
         loader.setControllerFactory(c -> viewController);
-        return loader.load();
+        loader.load();
+        return viewController;
     }
 }

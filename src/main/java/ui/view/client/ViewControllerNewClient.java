@@ -2,6 +2,7 @@ package ui.view.client;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lombok.RequiredArgsConstructor;
 import model.Client;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerNewClient implements ViewController {
+    @FXML private Pane servicedView;
     @FXML private Text errorMessage;
     @FXML private TextField surnameField;
     @FXML private TextField nameField;
@@ -24,6 +26,11 @@ public class ViewControllerNewClient implements ViewController {
     @Override
     public String getViewPath() {
         return "view/client/new_client.fxml";
+    }
+
+    @Override
+    public Pane getServicesView() {
+        return servicedView;
     }
 
     @FXML

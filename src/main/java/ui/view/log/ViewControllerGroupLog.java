@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
 import lombok.RequiredArgsConstructor;
 import model.*;
 import service.IGroupService;
@@ -20,12 +21,10 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerGroupLog implements ViewController {
-    @FXML
-    private TableView<RowModel> logTable;
-    @FXML
-    private ComboBox<WorkoutType> workoutType;
-    @FXML
-    private ComboBox<YearMonth> date;
+    @FXML private Pane servicedView;
+    @FXML private TableView<RowModel> logTable;
+    @FXML private ComboBox<WorkoutType> workoutType;
+    @FXML private ComboBox<YearMonth> date;
 
     private final IGroupService groupService;
 
@@ -38,6 +37,11 @@ public class ViewControllerGroupLog implements ViewController {
     @Override
     public String getViewPath() {
         return "view/group_log.fxml";
+    }
+
+    @Override
+    public Pane getServicesView() {
+        return servicedView;
     }
 
     public void onSetPeriod() {

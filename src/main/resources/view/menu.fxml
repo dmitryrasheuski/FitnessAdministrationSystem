@@ -5,6 +5,7 @@
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="ui.view.ViewControllerMenu"
+      fx:id="servicedView"
       stylesheets="@/css/menu.css" styleClass="menu_pane">
     <RadioButton fx:id="groupButton" text="Группы" styleClass="toggle" onAction="#showGroupLog"/>
     <RadioButton fx:id="clientsButton" text="Клиенты" styleClass="toggle" onAction="#showClients"/>

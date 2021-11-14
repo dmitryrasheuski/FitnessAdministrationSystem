@@ -3,6 +3,7 @@ package ui.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Pane;
 import lombok.RequiredArgsConstructor;
 import ui.UiManager;
 
@@ -10,6 +11,7 @@ import javax.inject.Inject;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerMenu implements ViewController{
+    @FXML private Pane servicedView;
     @FXML private RadioButton groupButton;
     @FXML private RadioButton clientsButton;
 
@@ -30,6 +32,11 @@ public class ViewControllerMenu implements ViewController{
     @Override
     public final String getViewPath() {
         return "view/menu.fxml";
+    }
+
+    @Override
+    public Pane getServicesView() {
+        return servicedView;
     }
 
     @FXML
