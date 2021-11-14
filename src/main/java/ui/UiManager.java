@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
-import ui.view.ViewControllerGroupLog;
+import ui.view.log.ViewControllerGroupLog;
 
 import javax.inject.Singleton;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class UiManager {
     public void openGroupLogWorkspace() {
         Pane view;
         try {
-            view = viewProvider.getView(null);
+            view = viewProvider.getView(ViewControllerGroupLog.class);
         } catch (IOException e) {
             e.printStackTrace();
             return;
