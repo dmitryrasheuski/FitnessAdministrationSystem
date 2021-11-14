@@ -12,12 +12,17 @@ public class ClientService implements IClientService{
     private final List<Client> clients = new ArrayList<>();
 
     @Override
-    public boolean isUnique(Client client) {
-        return !clients.contains(client);
+    public List<Client> getClients() {
+        return clients;
     }
 
     @Override
     public void addClient(Client client) throws IOException {
         clients.add(client);
+    }
+
+    @Override
+    public boolean isUnique(Client client) {
+        return !clients.contains(client);
     }
 }
