@@ -13,6 +13,7 @@ import ui.UiManager;
 import ui.view.ViewController;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,6 +66,22 @@ public class ViewControllerClients implements ViewController {
                 .collect(Collectors.toList());
 
         clientList.getItems().setAll(clients);
+    }
+
+    public void updateClientInfo() {
+        Client client = clientList.getSelectionModel().getSelectedItem();
+        client.setSurname(surnameField.getText());
+        client.setName(nameField.getText());
+        client.setPatronymic(patronymicField.getText());
+        client.setPhone(phoneField.getText());
+
+        //TODO должна быть проверка на уникальность ФИО
+
+        try {
+            clientService.updateClient(client);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String getFio(Client client) {

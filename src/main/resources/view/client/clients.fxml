@@ -18,19 +18,19 @@
         <VBox fx:id="clientInfoContainer" visible="false">
             <HBox>
                 <Label text="Фамилия"/>
-                <TextField fx:id="surnameField"/>
+                <TextField fx:id="surnameField" onKeyTyped="#updateClientInfo"/>
             </HBox>
             <HBox>
                 <Label text="Имя"/>
-                <TextField fx:id="nameField"/>
+                <TextField fx:id="nameField" onKeyTyped="#updateClientInfo"/>
             </HBox>
             <HBox>
                 <Label text="Отчество"/>
-                <TextField fx:id="patronymicField"/>
+                <TextField fx:id="patronymicField" onKeyTyped="#updateClientInfo"/>
             </HBox>
             <HBox>
                 <Label text="Телефон"/>
-                <TextField fx:id="phoneField"/>
+                <TextField fx:id="phoneField" onKeyTyped="#updateClientInfo"/>
             </HBox>
         </VBox>
     </HBox>
