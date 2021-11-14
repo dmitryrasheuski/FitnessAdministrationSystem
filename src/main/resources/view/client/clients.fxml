@@ -11,7 +11,7 @@
             fx:controller="ui.view.client.ViewControllerClients">
     <HBox>
         <VBox>
-            <TextField fx:id="searchField"/>
+            <TextField fx:id="searchField" onKeyTyped="#filterClient"/>
             <ListView fx:id="clientList"/>
             <Button text="Создать" onAction="#showNewClientDialog"/>
         </VBox>

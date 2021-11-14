@@ -13,6 +13,8 @@ import ui.UiManager;
 import ui.view.ViewController;
 
 import javax.inject.Inject;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerClients implements ViewController {
@@ -53,5 +55,19 @@ public class ViewControllerClients implements ViewController {
         patronymicField.setText(client.getPatronymic());
         phoneField.setText(client.getPhone());
         clientInfoContainer.setVisible(true);
+    }
+
+    public void filterClient() {
+        String pattern = searchField.getText();
+
+        List<Client> clients = clientService.getClients().stream()
+                .filter(client -> getFio(client).contains(pattern))
+                .collect(Collectors.toList());
+
+        clientList.getItems().setAll(clients);
+    }
+
+    private String getFio(Client client) {
+        return String.format("%s %s %s", client.getSurname(), client.getName(), client.getPatronymic());
     }
 }
