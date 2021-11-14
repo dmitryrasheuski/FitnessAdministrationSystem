@@ -1,7 +1,6 @@
-import com.google.inject.Guice;
+import di.Context;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import ui.UiManager;
 
 import java.io.IOException;
 
@@ -13,8 +12,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Guice.createInjector()
-                .getInstance(UiManager.class)
-                .start(primaryStage);
+        new Context().getUiManage().start(primaryStage);
     }
 }
