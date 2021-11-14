@@ -1,2 +1,2 @@
-rootProject.name = "stump"
+rootProject.name = "FitnessApp"
 
