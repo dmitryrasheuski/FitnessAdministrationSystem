@@ -5,7 +5,7 @@ import com.google.inject.Injector;
 import ui.UiManager;
 
 public class Context {
-    private final Injector injector =  Guice.createInjector();
+    private final Injector injector =  Guice.createInjector(new ServiceModule());
 
     public UiManager getUiManage() {
         return injector.getInstance(UiManager.class);
