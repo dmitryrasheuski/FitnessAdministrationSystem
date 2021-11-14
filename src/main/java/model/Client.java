@@ -16,6 +16,7 @@ public class Client {
     private String name;
     private String surname;
     private String patronymic;
+    private String phone;
     private Wallet wallet;
     private Set<Subscription> subscriptions;
 
