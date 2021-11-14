@@ -10,17 +10,21 @@ import javax.inject.Inject;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerMenu implements ViewController{
-    @FXML
-    private RadioButton groupButton;
+    @FXML private RadioButton groupButton;
+    @FXML private RadioButton clientsButton;
 
     private final UiManager uiManager;
 
     @FXML
     private void initialize() {
         ToggleGroup group = new ToggleGroup();
+
         group.getToggles().add(groupButton);
+        group.getToggles().addAll(clientsButton);
+
+        group.getToggles().stream().map(RadioButton.class::cast).forEach(toggle -> toggle.getStyleClass().remove("radio-button"));
+
         group.selectToggle(groupButton);
-        groupButton.getStyleClass().remove("radio-button");
     }
 
     @Override
@@ -31,5 +35,10 @@ public class ViewControllerMenu implements ViewController{
     @FXML
     public void showGroupLog() {
         uiManager.openGroupLogWorkspace();
+    }
+
+    @FXML
+    public void showClients() {
+        uiManager.openClientWorkspace();
     }
 }

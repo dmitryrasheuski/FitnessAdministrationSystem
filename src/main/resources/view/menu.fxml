@@ -7,4 +7,5 @@
       fx:controller="ui.view.ViewControllerMenu"
       stylesheets="@/css/menu.css" styleClass="menu_pane">
     <RadioButton fx:id="groupButton" text="Группы" styleClass="toggle" onAction="#showGroupLog"/>
+    <RadioButton fx:id="clientsButton" text="Клиенты" styleClass="toggle" onAction="#showClients"/>
 </VBox>

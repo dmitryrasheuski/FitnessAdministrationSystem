@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import ui.view.client.ViewControllerClients;
 import ui.view.log.ViewControllerGroupLog;
 
 import javax.inject.Singleton;
@@ -34,6 +35,18 @@ public class UiManager {
         Pane view;
         try {
             view = viewProvider.getView(ViewControllerGroupLog.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        switchWorkspace(view);
+    }
+
+    public void openClientWorkspace() {
+        Pane view;
+        try {
+            view = viewProvider.getView(ViewControllerClients.class);
         } catch (IOException e) {
             e.printStackTrace();
             return;
