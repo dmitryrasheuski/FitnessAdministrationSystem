@@ -15,6 +15,7 @@ import ui.view.ViewController;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
@@ -36,7 +37,9 @@ public class ViewControllerClients implements ViewController {
         clientList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         clientList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Client>) change -> {
             change.next();
-            showClientInfo(change.getAddedSubList().get(0));
+            if (change.wasAdded()) {
+                showClientInfo(change.getAddedSubList().get(0));
+            }
         });
         clientList.setCellFactory(listView -> new ClientListCell());
         clientList.getItems().addAll(clientService.getClients());
@@ -53,7 +56,13 @@ public class ViewControllerClients implements ViewController {
     }
 
     public void showNewClientDialog() {
-        uiManager.openNewClientDialog();
+        CompletableFuture<Client> updateCallback = new CompletableFuture<>();
+        updateCallback.thenAccept(client -> {
+            searchField.clear();
+            filterClient();
+            clientList.getSelectionModel().select(client);
+        });
+        uiManager.openNewClientDialog(updateCallback);
     }
 
     public void showClientInfo(Client client) {

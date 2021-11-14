@@ -6,12 +6,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import model.Client;
 import ui.view.client.ViewControllerClients;
 import ui.view.client.ViewControllerNewClient;
 import ui.view.log.ViewControllerGroupLog;
 
 import javax.inject.Singleton;
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor_ = @Inject)
@@ -57,7 +59,7 @@ public class UiManager {
         switchWorkspace(controller.getServicesView());
     }
 
-    public void openNewClientDialog() {
+    public void openNewClientDialog(CompletableFuture<Client> closeCallback) {
         ViewControllerNewClient controller;
         try {
             controller = viewProvider.create(ViewControllerNewClient.class);
@@ -70,6 +72,9 @@ public class UiManager {
         stage.setTitle("Создание нового клиента");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(controller.getServicesView()));
+
+        closeCallback.thenAccept(client -> stage.hide());
+        controller.init(closeCallback);
 
         stage.show();
     }

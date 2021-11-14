@@ -11,6 +11,7 @@ import ui.view.ViewController;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerNewClient implements ViewController {
@@ -22,6 +23,12 @@ public class ViewControllerNewClient implements ViewController {
     @FXML private TextField phoneField;
 
     private final IClientService clientService;
+
+    private CompletableFuture<Client> closeCallback;
+
+    public void init(CompletableFuture<Client> closeCallback) {
+        this.closeCallback = closeCallback;
+    }
 
     @Override
     public String getViewPath() {
@@ -57,6 +64,6 @@ public class ViewControllerNewClient implements ViewController {
             return;
         }
 
-        // TODO закрыть диалог
+        closeCallback.complete(client);
     }
 }
