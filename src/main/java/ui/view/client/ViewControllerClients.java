@@ -97,6 +97,8 @@ public class ViewControllerClients implements ViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //TODO после изменения данных необходимо обновить отображение клиента в списке
     }
 
     private String getFio(Client client) {
