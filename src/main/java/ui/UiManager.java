@@ -3,9 +3,11 @@ package ui;
 import com.google.inject.Inject;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import ui.view.client.ViewControllerClients;
+import ui.view.client.ViewControllerNewClient;
 import ui.view.log.ViewControllerGroupLog;
 
 import javax.inject.Singleton;
@@ -53,6 +55,23 @@ public class UiManager {
         }
 
         switchWorkspace(view);
+    }
+
+    public void openNewClientDialog() {
+        Pane view;
+        try {
+            view = viewProvider.getView(ViewControllerNewClient.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Stage stage = new Stage();
+        stage.setTitle("Создание нового клиента");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(view));
+
+        stage.show();
     }
 
     private void switchWorkspace(Pane workspace) {

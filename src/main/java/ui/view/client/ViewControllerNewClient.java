@@ -1,0 +1,55 @@
+package ui.view.client;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import lombok.RequiredArgsConstructor;
+import model.Client;
+import service.IClientService;
+import ui.view.ViewController;
+
+import javax.inject.Inject;
+import java.io.IOException;
+
+@RequiredArgsConstructor(onConstructor_ = @Inject)
+public class ViewControllerNewClient implements ViewController {
+    @FXML private Text errorMessage;
+    @FXML private TextField surnameField;
+    @FXML private TextField nameField;
+    @FXML private TextField patronymicField;
+    @FXML private TextField phoneField;
+
+    private final IClientService clientService;
+
+    @Override
+    public String getViewPath() {
+        return "view/client/new_client.fxml";
+    }
+
+    @FXML
+    public void onCreateNewClient() {
+        Client client = new Client();
+
+        client.setSurname(surnameField.getText());
+        client.setName(nameField.getText());
+        client.setPatronymic(patronymicField.getText());
+        client.setPhone(phoneField.getText());
+
+        boolean isUnique = clientService.isUnique(client);
+
+        if (!isUnique) {
+            errorMessage.setText("Пользователь с указанными данными уже существует!");
+            return;
+        }
+
+        try {
+            clientService.addClient(client);
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorMessage.setText("При сохранении произошла ошибка!");
+            return;
+        }
+
+        // TODO закрыть диалог
+    }
+}

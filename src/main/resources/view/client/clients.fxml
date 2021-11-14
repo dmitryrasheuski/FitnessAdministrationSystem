@@ -7,5 +7,5 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="ui.view.client.ViewControllerClients"
             prefHeight="400.0" prefWidth="600.0">
-    <Button text="Создать"/>
+    <Button text="Создать" onAction="#showNewClientDialog"/>
 </AnchorPane>
