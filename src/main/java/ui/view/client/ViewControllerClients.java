@@ -30,6 +30,7 @@ public class ViewControllerClients implements ViewController {
     @FXML private TextField phoneField;
 
     private final UiManager uiManager;
+
     private final IClientService clientService;
 
     @FXML

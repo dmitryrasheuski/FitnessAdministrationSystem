@@ -10,6 +10,7 @@ import model.Client;
 import ui.view.client.ViewControllerClients;
 import ui.view.client.ViewControllerNewClient;
 import ui.view.group.ViewControllerGroupLog;
+import ui.view.group.ViewControllerNewGroup;
 
 import javax.inject.Singleton;
 import java.io.IOException;
@@ -75,6 +76,23 @@ public class UiManager {
 
         closeCallback.thenAccept(client -> stage.hide());
         controller.init(closeCallback);
+
+        stage.show();
+    }
+
+    public void openNewGroupDialog() {
+        ViewControllerNewGroup controller;
+        try {
+            controller = viewProvider.create(ViewControllerNewGroup.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Stage stage = new Stage();
+        stage.setTitle("Создание новой группы");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(controller.getServicesView()));
 
         stage.show();
     }

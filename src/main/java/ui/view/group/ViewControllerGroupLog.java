@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import lombok.RequiredArgsConstructor;
 import model.*;
 import service.IGroupService;
+import ui.UiManager;
 import ui.view.ViewController;
 
 import javax.inject.Inject;
@@ -25,6 +26,8 @@ public class ViewControllerGroupLog implements ViewController {
     @FXML private TableView<RowModel> logTable;
     @FXML private ComboBox<WorkoutType> workoutType;
     @FXML private ComboBox<YearMonth> date;
+
+    private final UiManager uiManager;
 
     private final IGroupService groupService;
 
@@ -56,6 +59,10 @@ public class ViewControllerGroupLog implements ViewController {
             return;
 
         updateGroupView();
+    }
+
+    public void onCreateNewGroup() {
+        uiManager.openNewGroupDialog();
     }
 
     private void updateGroupView() {

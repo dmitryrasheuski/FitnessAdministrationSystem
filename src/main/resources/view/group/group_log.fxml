@@ -13,6 +13,7 @@
             <ComboBox fx:id="date" onAction="#onSetPeriod"/>
             <Label text="Type"/>
             <ComboBox fx:id="workoutType" onAction="#onSetWorkoutType"/>
+            <Button text="Создать" onAction="#onCreateNewGroup"/>
         </HBox>
     </top>
     <center>

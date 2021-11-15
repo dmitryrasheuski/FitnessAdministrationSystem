@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.view.group.ViewControllerNewGroup"
+      fx:id="servicedView"
+      prefHeight="400.0" prefWidth="600.0">
+    <HBox>
+        <Label text="Date"/>
+        <ComboBox fx:id="periodComboBox" onAction="#onSetPeriod"/>
+    </HBox>
+    <HBox>
+        <Label text="Type"/>
+        <ComboBox fx:id="workoutComboBox" onAction="#onSetWorkoutType"/>
+    </HBox>
+    <HBox>
+        <Label text="График тренировок"/>
+        <ListView fx:id="planList"/>
+    </HBox>
+    <Button fx:id="createButton" text="Создать" onAction="#onCreateNewGroup" disable="true"/>
+</VBox>
