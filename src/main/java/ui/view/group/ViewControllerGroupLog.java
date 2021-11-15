@@ -36,7 +36,7 @@ public class ViewControllerGroupLog implements ViewController {
 
     @Override
     public String getViewPath() {
-        return "view/group_log.fxml";
+        return "view/group/group_log.fxml";
     }
 
     @Override
