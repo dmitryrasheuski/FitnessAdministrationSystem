@@ -1,4 +1,4 @@
-package ui.view.log;
+package ui.view.group;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;

@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import model.Client;
 import ui.view.client.ViewControllerClients;
 import ui.view.client.ViewControllerNewClient;
-import ui.view.log.ViewControllerGroupLog;
+import ui.view.group.ViewControllerGroupLog;
 
 import javax.inject.Singleton;
 import java.io.IOException;

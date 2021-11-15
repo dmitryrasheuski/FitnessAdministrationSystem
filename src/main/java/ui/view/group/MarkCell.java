@@ -1,4 +1,4 @@
-package ui.view.log;
+package ui.view.group;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.TableCell;

@@ -1,4 +1,4 @@
-package ui.view.log;
+package ui.view.group;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.ReadOnlyProperty;
