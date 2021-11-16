@@ -9,4 +9,5 @@ import java.util.List;
 public interface IGroupService {
     List<YearMonth> getDateList();
     Group getGroup(WorkoutType type, YearMonth period);
+    void addGroup(Group group);
 }

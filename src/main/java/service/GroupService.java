@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 public class GroupService implements IGroupService {
     private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("HH:mm dd.MM.yy");
 
+    private final List<Group> groups = new ArrayList<>();
+
     @Override
     public List<YearMonth> getDateList() {
         return Arrays.asList(
@@ -41,6 +43,11 @@ public class GroupService implements IGroupService {
         group.setPlan(getDates());
 
         return group;
+    }
+
+    @Override
+    public void addGroup(Group group) {
+        groups.add(group);
     }
 
     private Set<LocalDateTime> getDates() {

@@ -14,6 +14,7 @@ import java.util.Set;
 public class Group {
     private int id;
     private YearMonth period;
+    private WorkoutType workoutType;
     private Set<LocalDateTime> plan;
     private Set<Client> clients;
 }

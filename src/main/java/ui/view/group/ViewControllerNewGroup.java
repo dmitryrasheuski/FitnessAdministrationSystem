@@ -7,22 +7,31 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.Pane;
+import lombok.RequiredArgsConstructor;
+import model.Group;
 import model.WorkoutType;
+import service.IGroupService;
 import ui.view.ViewController;
 
+import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.time.MonthDay;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ViewControllerNewGroup implements ViewController {
     @FXML private Pane servicedView;
     @FXML private ComboBox<YearMonth> periodComboBox;
     @FXML private ComboBox<WorkoutType> workoutComboBox;
     @FXML private ListView<MonthDay> planList;
     @FXML private Button createButton;
+
+    private final IGroupService groupService;
 
     @FXML
     private void initialize() {
@@ -53,7 +62,20 @@ public class ViewControllerNewGroup implements ViewController {
     }
 
     public void onCreateNewGroup() {
+        YearMonth period = periodComboBox.getValue();
+        WorkoutType workoutType = workoutComboBox.getValue();
+        Set<LocalDateTime> workoutDates = planList.getSelectionModel()
+                .getSelectedItems()
+                .stream()
+                .map(day -> LocalDateTime.of(period.getYear(), period.getMonth(), day.getDayOfMonth(), 0, 0))
+                .collect(Collectors.toSet());
 
+        Group group = new Group();
+        group.setPeriod(period);
+        group.setWorkoutType(workoutType);
+        group.setPlan(workoutDates);
+
+        groupService.addGroup(group);
     }
 
     private void updateCreateAvailability() {
